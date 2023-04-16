@@ -10,7 +10,7 @@
         </li>
       </ul>
       <textarea :value="gptinput" placeholder="点击输入您的编辑需求" @input="$event => handleInput($event)"></textarea>
-      <button @click="commitInput">提交</button>
+      <button class="my_button" @click="commitInput">提交</button>
     </div>
   </div>
 </template>
@@ -65,8 +65,8 @@ const resize = (e: MouseEvent) => {
     const moveY = currentPageY - startPageY
     let newHeight = -moveY + originHeight
 
-    if (newHeight < 40) newHeight = 40
-    if (newHeight > 120) newHeight = 120
+    if (newHeight < 50) newHeight = 50
+    if (newHeight > 160) newHeight = 160
 
     emit('update:height', newHeight)
   }
@@ -95,11 +95,12 @@ const resize = (e: MouseEvent) => {
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color: rgb(47, 255, 0);
+    background-color: rgb(165, 218, 154);
   }
 
   .my_li_tittle {
-    background-color: rgb(47, 128, 233);
+    background-color: rgb(146, 191, 250);
+    font-weight: bold;
   }
 
   textarea {
@@ -126,5 +127,23 @@ const resize = (e: MouseEvent) => {
   right: 0;
   cursor: n-resize;
   z-index: 2;
+}
+
+.my_button {
+	width: 200px; 
+	height: 40px;
+	border-width: 0px;
+	border-radius: 3px;
+	background: rgb(71, 137, 224);
+	cursor: pointer;
+	outline: none;
+	color: white;
+	font-size: 17px;
+  position: relative;
+	right: 0;
+	bottom: 10px;
+}
+.my_button:hover{ 
+  background: rgb(140, 178, 228);
 }
 </style>
