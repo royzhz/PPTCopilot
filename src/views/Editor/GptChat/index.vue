@@ -130,6 +130,7 @@ const resize = (e: MouseEvent) => {
 }
 
 .my_button {
+<<<<<<< Updated upstream
 	width: 200px; 
 	height: 40px;
 	border-width: 0px;
@@ -144,6 +145,22 @@ const resize = (e: MouseEvent) => {
 	bottom: 10px;
 }
 .my_button:hover{ 
+=======
+  width: 200px;
+  height: 40px;
+  border-width: 0;
+  border-radius: 3px;
+  background: rgb(71, 137, 224);
+  cursor: pointer;
+  outline: none;
+  color: white;
+  font-size: 17px;
+  position: relative;
+  right: 0;
+  bottom: 10px;
+}
+.my_button:hover {
+>>>>>>> Stashed changes
   background: rgb(140, 178, 228);
 }
 </style>

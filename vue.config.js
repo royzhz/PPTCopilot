@@ -3,6 +3,9 @@
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 
 module.exports = {
+  devServer: {
+    historyApiFallback: true,
+  },
   publicPath: './',
   css: {
     loaderOptions: {

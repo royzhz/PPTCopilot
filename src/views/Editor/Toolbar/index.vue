@@ -28,6 +28,7 @@ import SlideDesignPanel from './SlideDesignPanel.vue'
 import SlideAnimationPanel from './SlideAnimationPanel.vue'
 import MultiPositionPanel from './MultiPositionPanel.vue'
 import SymbolPanel from './SymbolPanel.vue'
+import ChatWithGpt from './ChatWithGpt.vue'
 
 interface ElementTabs {
   label: string
@@ -56,6 +57,7 @@ const slideTabs = [
   { label: '设计', value: ToolbarStates.SLIDE_DESIGN },
   { label: '切换', value: ToolbarStates.SLIDE_ANIMATION },
   { label: '动画', value: ToolbarStates.EL_ANIMATION },
+  { label: '聊天', value: ToolbarStates.CHAT_WITH_GPT }
 ]
 const multiSelectTabs = [
   { label: '样式', value: ToolbarStates.EL_STYLE },
@@ -88,6 +90,7 @@ const currentPanelComponent = computed(() => {
     [ToolbarStates.SLIDE_ANIMATION]: SlideAnimationPanel,
     [ToolbarStates.MULTI_POSITION]: MultiPositionPanel,
     [ToolbarStates.SYMBOL]: SymbolPanel,
+    [ToolbarStates.CHAT_WITH_GPT]: ChatWithGpt,
   }
   return panelMap[toolbarState.value] || null
 })

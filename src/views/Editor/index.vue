@@ -54,6 +54,7 @@ import ExportDialog from './ExportDialog/index.vue'
 import SelectPanel from './SelectPanel.vue'
 import { Modal } from 'ant-design-vue'
 
+
 const mainStore = useMainStore()
 const { dialogForExport, showSelectPanel } = storeToRefs(mainStore)
 const closeExportDialog = () => mainStore.setDialogForExport('')
@@ -62,6 +63,7 @@ const remarkHeight = ref(40)
 
 useGlobalHotkey()
 usePasteEvent()
+
 </script>
 
 <style lang="scss" scoped>
