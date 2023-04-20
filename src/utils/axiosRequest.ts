@@ -13,11 +13,7 @@ interface ResultData<T> extends Result {
   data?: T;
 }
 
-<<<<<<< Updated upstream
-const URL = 'http://127.0.0.1:5000'
-=======
 export const URL = 'http://127.0.0.1:8080'
->>>>>>> Stashed changes
 enum RequestEnums {
   TIMEOUT = 200000, // 超时时间，要设置的很大！！
   OVERDUE = 600, // 登录失效

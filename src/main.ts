@@ -6,7 +6,6 @@ import VueCookies from 'vue-cookies'
 import App from './App.vue'
 import Register from './user/Register.vue'
 import Editor from './views/Editor/index.vue'
-import { loginURL } from '@/user/services/AuthService'
 import LoginForm from '@/user/LoginForm.vue'
 
 import './registerServiceWorker'
@@ -49,11 +48,8 @@ const router = createRouter({
 })
 
 router.beforeEach(function(to, from, next) {
-  console.log('是否需要登录才能访问')
   if (to.meta.needLogin) {
-
     '/login'
-
   }
   else {
     next()

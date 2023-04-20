@@ -24,7 +24,16 @@
         </div>
 
         <div>
-          <button type="submit">注册</button>
+          <button type="submit" @click="sendVerificationCode">发送</button>
+        </div>
+
+        <div>
+          <label for="verificationCode">验证码: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input type="text" id="verificationCode" v-model="verificationCode">
+        </div>
+
+        <div>
+          <button type="submit" @click="onSubmit">注册</button>
         </div>
       </form>
       <div class="register-footer">
@@ -34,30 +43,18 @@
   </div>
 </template>
 
-<script>
-import { register } from '@/user/services/AuthService'
+<script lang="ts" setup>
+import { register } from '@/api/AuthService'
+import { ref } from 'vue'
 
-export default {
-  data() {
-    return {
-      username: '',
-      password: '',
-      passwordConfirm: '',
-      email: ''
-    }
-  },
-  methods: {
-    async onSubmit() {
-      try {
-        await register(this.username, this.password)
-        // 注册成功，进行页面跳转或其他操作
-      }
-      catch (error) {
-        // 注册失败，显示错误消息或其他处理
-      }
-    }
-  }
-}
+const username = ref<string>('')
+const password = ref<string>('')
+const passwordConfirm = ref<string>('')
+const email = ref<string>('')
+const verificationCode = ref<string>('')
+
+
+
 </script>
 
 
@@ -114,6 +111,7 @@ button[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  margin-bottom: 20px;
 }
 
 button[type="submit"]:hover {

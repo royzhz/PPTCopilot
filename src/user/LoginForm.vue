@@ -26,57 +26,38 @@
   </div>
 </template>
 
-<script>
-import { loginURL } from '@/user/services/AuthService'
-import axios from 'axios'
+<script lang="ts" setup>
+import { login, checklogin, loginRequest } from '@/api/AuthService'
+import { ref } from 'vue'
 
-export default {
-  data() {
-    return {
-      username: '',
-      password: ''
-    }
-  },
-  methods: {
-    async onsbmit() {
-      await this.login()
-    },
-    async login() {
-      try {
-        const response = await axios.post('http://localhost:8080/login', {
-          username_or_email: this.username,
-          password: this.password
-        }, {
-          withCredentials: true
-        })
+const username = ref<string>('')
+const password = ref<string>('')
 
-        this.$router.push('/')
-      }
-      catch (error) {
-        console.log('error')
-        console.log(error)
-        // 处理错误情况
-      }
-    },
-
-    async checkLogin() {
-      try {
-        const response = await axios.get('http://localhost:8080/checklogin', {
-          withCredentials: true
-        })
-        if (response.data.isAuthorized) {
-          return true
-        }
-      }
-      catch (error) {
-        console.log(error)
-        // 处理错误情况
-        return false
-      }
-    }
+const onsbmit = () => {
+  const my_login_request:loginRequest = {
+    username_or_email: username.value,
+    password: password.value
   }
+
+  login(my_login_request).then((res) => {
+    console.log(res)
+
+    mycheckLogin()
+
+  }).catch((err) => {
+    console.log(err)
+  })
 }
 
+const mycheckLogin = () => {
+  checklogin().then((res) => {
+    console.log(res)
+
+  }).catch((err) => {
+    console.log(err)
+  })
+
+}
 
 
 
